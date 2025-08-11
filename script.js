@@ -8,32 +8,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to add a new task
     function addTask() {
-        const taskText = taskInput.value.trim();
-
-        if (taskText === "") {
-            alert("Please enter a task!");
-            return;
-        }
-
-        // Create a new list item
-        const li = document.createElement('li');
+    const taskText = taskInput.value.trim();
+    if (taskText !== "") {
+        const li = document.createElement("li");
         li.textContent = taskText;
 
-        // Create a remove button
-        const removeBtn = document.createElement('button');
+        const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
-        removeBtn.className = 'remove-btn';
-
-        // Event to remove the task when button clicked
+        removeBtn.classList.add("remove-btn"); // ✅ This fixes the missing classList.add
         removeBtn.onclick = function () {
             taskList.removeChild(li);
         };
 
-        // Append remove button to li and li to task list
         li.appendChild(removeBtn);
         taskList.appendChild(li);
-
-        // Clear input
         taskInput.value = "";
     }
 
